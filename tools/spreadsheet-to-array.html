@@ -6,16 +6,20 @@
 </head>
 <body>
 <div id="hot"></div>
-<br />
+<h2>Array</h2>
 <button id="toJson">To Json array</button>
 <button id="toPHPArrayShort">To PHP short array "[]"</button>
 <button id="toPHPArray">To PHP array "array()"</button>
 
-<br /><br />
-
+<h2>Associative array : 1st column is key</h2>
 <button id="toJsonAssoc">To Json associative array</button>
 <button id="toPhpAssociativeArrayShort">To PHP short associative array "[]"</button>
 <button id="toPhpAssociativeArray">To PHP associative array "array()"</button>
+
+<h2>Associative array : 1st row is field name</h2>
+<button id="toJsonAssocField">To Json associative array</button>
+<button id="toPhpAssociativeArrayShortField">To PHP short associative array "[]"</button>
+<button id="toPhpAssociativeArrayField">To PHP associative array "array()"</button>
 <br /><br />
 <textarea id="output"></textarea>
 
@@ -55,6 +59,21 @@
         return assoc;
     };
 
+    Array.prototype.toAssocField = function() {
+        var rows = [];
+        var me = this;
+        this.forEach(function(val, i) {
+            if(i!=0) { //skip header
+                var row = {};
+                me[i].forEach(function(val2, j) {
+                    row[me[0][j]] = me[i][j];
+                });
+                rows.push(row);
+            }
+        });
+        return rows;
+    };
+
     Object.prototype.toPHPArrayShort = Array.prototype.toPHPArrayShort = function() {
         return JSON.stringify(this)
                 .replaceAll('{', '[').replaceAll('}', ']')
@@ -81,7 +100,8 @@
     var output = $$('output');
 
     var hot = new Handsontable($$('hot'), {
-        data: [['a', 1],['b', 2]],
+//        data: [['a', 1],['b', 2]],
+        data: [["name","age"],["John","65"],["Bob","54"]],
         minSpareCols: 1,
         minSpareRows: 1,
         rowHeaders: true,
@@ -89,6 +109,7 @@
         contextMenu: true
     });
 
+    //array
     $$('toJson').onclick = function() {
         var data = hot.getData().clean();
         output.value = JSON.stringify(data);
@@ -104,6 +125,7 @@
         output.value = data.toPHPArray();
     };
 
+    //assoc
     $$('toJsonAssoc').onclick = function() {
         var data = hot.getData().clean().toAssoc();
         output.value = JSON.stringify(data);
@@ -111,12 +133,27 @@
 
     $$('toPhpAssociativeArrayShort').onclick = function() {
         data = hot.getData().clean().toAssoc();
-
         output.value = data.toPHPArrayShort();
     };
 
     $$('toPhpAssociativeArray').onclick = function() {
         var data = hot.getData().clean().toAssoc();
+        output.value = data.toPHPArray();
+    };
+
+    //assoc field
+    $$('toJsonAssocField').onclick = function() {
+        var data = hot.getData().clean().toAssocField();
+        output.value = JSON.stringify(data);
+    };
+
+    $$('toPhpAssociativeArrayShortField').onclick = function() {
+        data = hot.getData().clean().toAssocField();
+        output.value = data.toPHPArrayShort();
+    };
+
+    $$('toPhpAssociativeArrayField').onclick = function() {
+        var data = hot.getData().clean().toAssocField();
         output.value = data.toPHPArray();
     };
 </script>
