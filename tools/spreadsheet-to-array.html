@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://docs.handsontable.com/0.32.0/bower_components/handsontable/dist/handsontable.full.css">
+    <script src="http://docs.handsontable.com/0.32.0/bower_components/handsontable/dist/handsontable.full.js"></script>
+</head>
+<body>
+<div id="hot"></div>
+<br />
+<button id="toJson">To Json array</button>
+<button id="toPHPArrayShort">To PHP short array "[]"</button>
+<button id="toPHPArray">To PHP array "array()"</button>
+
+<br /><br />
+
+<button id="toJsonAssoc">To Json associative array</button>
+<button id="toPhpAssociativeArrayShort">To PHP short associative array "[]"</button>
+<button id="toPhpAssociativeArray">To PHP associative array "array()"</button>
+<br /><br />
+<textarea id="output"></textarea>
+
+<style>
+    #output{
+        width: 100%;
+        height: 300px;
+    }
+</style>
+<script>
+
+    Array.prototype.clean = function() {
+        for (var i = 0; i < this.length; i++) {
+            var subarray = this[i];
+            for (var j = 0; j < subarray.length; j++) {
+                if (subarray[j] == null) {
+                    subarray.splice(j, 1);
+                    j--;
+                }
+            }
+
+            //remove empty subarray
+            if(subarray.length == 0) {
+                this.splice(i,1);
+                i--;
+            }
+        }
+        return this;
+    };
+
+    Array.prototype.toAssoc = function() {
+        var assoc = {};
+        var me = this;
+        this.forEach(function(val, i) {
+            assoc[me[i][0]] = me[i][1];
+        });
+        return assoc;
+    };
+
+    Object.prototype.toPHPArrayShort = Array.prototype.toPHPArrayShort = function() {
+        return JSON.stringify(this)
+                .replaceAll('{', '[').replaceAll('}', ']')
+                .replaceAll(':', '=>');
+    };
+
+    Object.prototype.toPHPArray = Array.prototype.toPHPArray = function() {
+        return JSON.stringify(this)
+                .replaceAll('{', 'array(').replaceAll('}', ')')
+                .replaceAll('[', 'array(')
+                .replaceAll(']', ')')
+                .replaceAll(':', '=>');
+    };
+
+    String.prototype.replaceAll = function(search, replacement) {
+        return this.split(search).join(replacement);
+//        return this.replace(new RegExp(search, 'g'), replacement); //must handle special char : eg [ => \\[
+    };
+
+    $$ = function(id) {
+        return document.getElementById(id);
+    };
+
+    var output = $$('output');
+
+    var hot = new Handsontable($$('hot'), {
+        data: [['a', 1],['b', 2]],
+        minSpareCols: 1,
+        minSpareRows: 1,
+        rowHeaders: true,
+        colHeaders: true,
+        contextMenu: true
+    });
+
+    $$('toJson').onclick = function() {
+        var data = hot.getData().clean();
+        output.value = JSON.stringify(data);
+    };
+
+    $$('toPHPArrayShort').onclick = function() {
+        var data = hot.getData().clean();
+        output.value = data.toPHPArrayShort();
+    };
+
+    $$('toPHPArray').onclick = function() {
+        var data = hot.getData().clean();
+        output.value = data.toPHPArray();
+    };
+
+    $$('toJsonAssoc').onclick = function() {
+        var data = hot.getData().clean().toAssoc();
+        output.value = JSON.stringify(data);
+    };
+
+    $$('toPhpAssociativeArrayShort').onclick = function() {
+        data = hot.getData().clean().toAssoc();
+
+        output.value = data.toPHPArrayShort();
+    };
+
+    $$('toPhpAssociativeArray').onclick = function() {
+        var data = hot.getData().clean().toAssoc();
+        output.value = data.toPHPArray();
+    };
+</script>
+</body>
+</html>
