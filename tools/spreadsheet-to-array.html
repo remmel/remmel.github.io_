@@ -35,7 +35,7 @@
         for (var i = 0; i < this.length; i++) {
             var subarray = this[i];
             for (var j = 0; j < subarray.length; j++) {
-                if (subarray[j] == null) {
+                if (subarray[j] == null || subarray[j] == "") {
                     subarray.splice(j, 1);
                     j--;
                 }
