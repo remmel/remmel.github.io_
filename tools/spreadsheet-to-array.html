@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Converts spreadsheet (csv, excel, xls) to json or php array</h1>
+<button id="rowsToColumns">Translate Rows <> Columns</button><br /><br />
 <div id="hot"></div>
 <h2>Array</h2>
 <button id="toJson">To Json array</button>
@@ -109,6 +110,14 @@
         colHeaders: true,
         contextMenu: true
     });
+
+    //handsontable actions
+    $$('rowsToColumns').onclick = function() {
+        var data = hot.getData();
+        hot.updateSettings({
+            data: Handsontable.helper.translateRowsToColumns(data)
+        });
+    };
 
     //array
     $$('toJson').onclick = function() {
