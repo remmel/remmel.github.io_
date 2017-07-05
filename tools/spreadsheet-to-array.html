@@ -22,6 +22,10 @@
 <button id="toJsonAssocField">To Json associative array</button>
 <button id="toPhpAssociativeArrayShortField">To PHP short associative array "[]"</button>
 <button id="toPhpAssociativeArrayField">To PHP associative array "array()"</button>
+<br /><br />Group by <input id="grouped" value="" />
+<br /><br />
+<h2>Custom (yml 1col key)</h2>
+<button id="toCustomYml">To Yml</button>
 <br /><br />
 <textarea id="output"></textarea>
 
@@ -90,6 +94,21 @@
                 .replaceAll(':', '=>');
     };
 
+    Array.prototype.groupedBy = function(key) {
+        if(key) {
+            var assoc = {};
+            var me = this;
+            this.forEach(function(item) {
+                var val = item[key];
+                if(!assoc[val]) assoc[val] = [item];
+                else assoc[val].push(item);
+            });
+            return assoc;
+        } else {
+            return this;
+        }
+    };
+
     String.prototype.replaceAll = function(search, replacement) {
         return this.split(search).join(replacement);
 //        return this.replace(new RegExp(search, 'g'), replacement); //must handle special char : eg [ => \\[
@@ -153,18 +172,35 @@
 
     //assoc field
     $$('toJsonAssocField').onclick = function() {
-        var data = hot.getData().clean().toAssocField();
+        var data = hot.getData().clean().toAssocField().groupedBy($$('grouped').value);
         output.value = JSON.stringify(data);
     };
 
     $$('toPhpAssociativeArrayShortField').onclick = function() {
-        data = hot.getData().clean().toAssocField();
+        data = hot.getData().clean().toAssocField().groupedBy($$('grouped').value);
         output.value = data.toPHPArrayShort();
     };
 
     $$('toPhpAssociativeArrayField').onclick = function() {
-        var data = hot.getData().clean().toAssocField();
+        var data = hot.getData().clean().toAssocField().groupedBy($$('grouped').value);
         output.value = data.toPHPArray();
+    };
+
+    $$('toCustomYml').onclick = function() {
+        var s = "";
+        var data = hot.getData().clean().forEach(function(row, rowId) {
+            row.forEach(function(cell, cellId) {
+                if(cell.endsWith(':') || cell.indexOf(': ') !== -1) {
+                    cell = "\""+cell+"\"";
+                }
+                if(cellId == 0) {
+                    s+=cell+":\n";
+                } else {
+                    s+="  - "+cell+"\n";
+                }
+            });
+        });
+        output.value = s;
     };
 </script>
 </body>
