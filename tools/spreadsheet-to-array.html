@@ -24,7 +24,7 @@
 <button id="toPhpAssociativeArrayField">To PHP associative array "array()"</button>
 <br /><br />Group by <input id="grouped" value="" />
 <br /><br />
-<h2>Custom (yml 1col key)</h2>
+<h2>Custom (yml / yaml 1col key)</h2>
 <button id="toCustomYml">To Yml</button>
 <br /><br />
 <textarea id="output"></textarea>
@@ -191,7 +191,7 @@
         var data = hot.getData().clean().forEach(function(row, rowId) {
             row.forEach(function(cell, cellId) {
                 if(cell.endsWith(':') || cell.indexOf(': ') !== -1) {
-                    cell = "\""+cell+"\"";
+                    cell = "\""+cell.replaceAll('"', '\\"')+"\"";
                 }
                 if(cellId == 0) {
                     s+=cell+":\n";
