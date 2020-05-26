@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SVG Pie Chart Online</title>
+        <script src="https://rawgit.com/DmitryBaranovskiy/raphael/master/raphael.js"></script>
+        <script src="https://rawgit.com/DmitryBaranovskiy/g.raphael/master/g.raphael.js"></script>
+        <script src="https://rawgit.com/DmitryBaranovskiy/g.raphael/master/g.pie.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <style>
+        	body {
+			    background: #999;
+			    font: 100.01% "Fontin Sans", Fontin-Sans, "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, Helvetica, sans-serif;
+			    color: #000;
+			    margin: 10px 0 0 0;
+			    padding: 0;
+			    
+			}
+
+			form{
+				padding-top: 20px;
+			}
+
+			input[type=text]{
+				width: 30px;
+			}
+
+			#holder{
+			    height: 400px;
+			}
+
+			#chart-and-btn {
+			    border-radius: 10px;
+			    box-shadow: 0 1px 3px #666;
+			    background: #ddd;
+			    margin: 0 auto;
+			    width: 640px;
+                padding: 10px;
+			}
+			p {
+			    text-align: left;
+			    margin: .5em 2em;
+			}
+
+			a.btn{
+				display: block;
+			    padding:8px 0;
+			    text-align:center;
+			    margin:0 auto;
+			    border-radius:7px;
+			    font-size: 0.85em;
+			    width:120px;
+			    color: #fff;
+			    background: #444;
+			    text-decoration: none;
+    			transition: color, background 200ms ease-in-out;
+			}
+
+			a.btn:hover{
+				background: #c62b02;
+			}
+        </style>
+        
+        <script>
+        	var r;
+
+            var generateSVG = function () {
+            	var values = [];
+                var legend = [];
+            	$("input[name=data]").each(function(k,v){
+            		var data = $(v).val();
+            		if(data) {
+            			values.push(parseInt(data));
+            		}
+            	});
+
+            	var stroke = $("input[name=stroke]").is(":checked") ?"white" : "none";
+
+            	if(r) {
+            		r.remove() 
+            	}
+
+                r = Raphael("holder");
+                r.piechart(320, 180, 150, values.slice(0),{
+            		stroke: stroke,
+            		legend: values.slice(0),
+                    sort: false
+            	});
+                
+            };
+
+            var exportSVG = function(){
+            	var svgString = $('#holder').html();
+				var a = document.createElement('a');
+				a.download = 'mySvg.svg';
+				a.type = 'image/svg+xml';
+				blob = new Blob([svgString], {"type": "image/svg+xml"});
+				a.href = (window.URL || webkitURL).createObjectURL(blob);
+				a.click();
+            }
+
+
+            $( document ).ready(function() {
+			    generateSVG();
+
+			    $("#export-btn").click(exportSVG);
+
+			    $("input").change(generateSVG);
+
+
+			});
+        </script>
+    </head>
+    <body class="raphael">
+    	<div id="chart-and-btn">
+            Create online you svg piechart. Export it in SVG. Later you can edit it on Inkscape or whatever tool.
+    		<form>
+    			<label>values </label>
+    			<input type="text" name="data" value="20">
+    			<input type="text" name="data" value="30">
+    			<input type="text" name="data" value="10">
+    			<input type="text" name="data" value="40">
+    			<input type="text" name="data" value="">
+    			<input type="text" name="data" value="">
+    			<input type="text" name="data" value="">
+    			<input type="text" name="data" value="">
+    			<input type="text" name="data" value="">
+    			<input type="text" name="data" value=""><br />
+    			<label>border </label><input type="checkbox" name="stroke">
+    		</form>
+    		<div id="holder"></div>
+        	<a class="btn" id="export-btn" href="#">Export to SVG</a>
+    	</div>
+    	<a href="http://g.raphaeljs.com/">Made with RaphelJS</a> / <a href="http://remmel.github.io/">Hosted on github pages</a>
+    </body>
+</html>

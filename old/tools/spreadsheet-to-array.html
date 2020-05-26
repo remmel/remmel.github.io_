@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://docs.handsontable.com/0.32.0/bower_components/handsontable/dist/handsontable.full.css">
+    <link rel="stylesheet" type="text/css" href="spreadsheet-to-array/style.css">
+    <script src="http://docs.handsontable.com/0.32.0/bower_components/handsontable/dist/handsontable.full.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="spreadsheet-to-array/tools.js"></script>
+    <script src="spreadsheet-to-array/script.js"></script>
+</head>
+<body>
+<h1>Converts spreadsheet (csv, excel, xls) to json or php array</h1>
+<button id="rowsToColumns">Translate Rows <> Columns</button><br />
+<button id="removeDuplicate">Unique</button><button class="load-data" data-name="duplicate">Load example with duplicate</button><br /><br />
+
+<div id="hot"></div>
+
+<h2>Array</h2>
+<button id="toJson">To Json array</button>
+<button id="toPHPArrayShort">To PHP short array "[]"</button>
+<button id="toPHPArray">To PHP array "array()"</button>
+
+<h2>Associative array : 1st column is key, 2nd value (only 2 cols)</h2>
+<!-- TODO handle associative array with multiple value eg {1:['a','b']} -->
+<button class="load-data" data-name="col1key">Load example</button>
+<br /><br />
+
+<!--<form>-->
+    <!--Notation :-->
+    <!--<input type="radio" name="notation" value="json"> Json-->
+    <!--<input type="radio" name="notation" value="phparrayshort"> PHP Short "[]"-->
+    <!--<input type="radio" name="notation" value="phparray"> PHP "array()"-->
+<!--</form>-->
+
+<button id="toJsonAssoc">To Json associative array</button>
+<button id="toPhpAssociativeArrayShort">To PHP short associative array "[]"</button>
+<button id="toPhpAssociativeArray">To PHP associative array "array()"</button>
+
+<h2>Associative array : 1st row is field name</h2>
+<button class="load-data" data-name="row1key">Load example</button>
+<br /><br />
+Group by <input list="grouped_list" id="grouped" value="" />
+<datalist id="grouped_list"></datalist>
+<br /><br />
+<button id="toJsonAssocField">To Json associative array</button>
+<button id="toPhpAssociativeArrayShortField">To PHP short associative array "[]"</button>
+<button id="toPhpAssociativeArrayField">To PHP associative array "array()"</button>
+
+<br /><br />
+<h2>Custom (yml / yaml 1col key)</h2>
+<button id="toCustomYml">To Yml</button>
+<br /><br />
+<textarea id="output"></textarea>
+
+</body>
+</html>

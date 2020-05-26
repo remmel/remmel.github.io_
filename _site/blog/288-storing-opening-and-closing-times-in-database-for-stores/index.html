@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Storing opening and closing times in database for stores | Remy Mellet</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Storing opening and closing times in database for stores" />
+<meta name="author" content="remmel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Requirement:" />
+<meta property="og:description" content="Requirement:" />
+<link rel="canonical" href="http://localhost:4000/blog/288-storing-opening-and-closing-times-in-database-for-stores/" />
+<meta property="og:url" content="http://localhost:4000/blog/288-storing-opening-and-closing-times-in-database-for-stores/" />
+<meta property="og:site_name" content="Remy Mellet" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-11-24T13:18:06+01:00" />
+<script type="application/ld+json">
+{"description":"Requirement:","dateModified":"2013-11-24T13:18:06+01:00","url":"http://localhost:4000/blog/288-storing-opening-and-closing-times-in-database-for-stores/","headline":"Storing opening and closing times in database for stores","datePublished":"2013-11-24T13:18:06+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/288-storing-opening-and-closing-times-in-database-for-stores/"},"author":{"@type":"Person","name":"remmel"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Remy Mellet" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Remy Mellet</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Storing opening and closing times in database for stores</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2013-11-24T13:18:06+01:00" itemprop="datePublished">Nov 24, 2013
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">remmel</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Requirement:</p>
+
+<ul>
+  <li>Store can open and close many times during the day</li>
+  <li>Store can close the day after it opens (store opened after midnight)</li>
+  <li>Precision of the time must be 1/2 hour / 30minutes</li>
+  <li>Searching for the store opened at a certain time must be done efficiently</li>
+  <li>Every weeks have same business hours</li>
+</ul>
+
+<p>Info:</p>
+
+<ul>
+  <li>Type “Time” doesn’t exists in MySQL</li>
+</ul>
+
+<p>Example:</p>
+
+<ul>
+  <li>Mon : 10.00-14.00 17.00-22.00</li>
+  <li>Tue : 10.00-22.00</li>
+  <li>Wed : 10.00-22.30</li>
+  <li>Thu : 10.00-22.30</li>
+  <li>Fri : 10.30-01.00 (+1d)</li>
+  <li>Sat : 11.30-02.00 (+1d)</li>
+  <li>Sun : Closed</li>
+</ul>
+
+<h2 id="1encode-all-the-opening-closing-time-of-a-store-in-one-number">1/Encode all the opening-closing time of a store in one number</h2>
+
+<p>Let’s see the opening time table as an array. For instance if the store would be open from 10am to 2pm and 5pm to 10pm we would have:</p>
+
+<p>000000000000000000001111111100000011111111110000 &lt;=&gt; 17575273562112</p>
+
+<p>20*0 (20 first 1/2 hour closed) ; 8*1 (4 hours / 8 1/2hours openend) ; etc…</p>
+
+<p style="text-align: center;">
+  <a href="/wp-content/uploads/2013/11/openingclosingtime1.png"><img class="size-medium wp-image-293 aligncenter" title="openingclosingtime1" src="/wp-content/uploads/2013/11/openingclosingtime1-300x54.png" alt="" width="300" height="54" srcset="/wp-content/uploads/2013/11/openingclosingtime1-300x54.png 300w, /wp-content/uploads/2013/11/openingclosingtime1.png 694w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</p>
+
+<p>For one day there are 2^(24*2) = 2^48 possibilities<br />
+For one week there are 2^(24*2*7) = 2^336</p>
+
+<p>As the bigger mysql integer size is 2^64 we don’t have big enough integer to encode it.</p>
+
+<p>More explication here: <a href="http://remy-mellet.com/dev/b48encode.html">http://remy-mellet.com/dev/b48encode.html</a></p>
+
+<h2 id="2openingperiod-table">2/OpeningPeriod table</h2>
+
+<ul>
+  <li><span style="text-decoration: underline;">id</span></li>
+  <li><em>store_id</em></li>
+  <li>day [0=sun – 1=mon – … – 6=sat]</li>
+  <li>open [0am=0; 0.30am=1; 1am=2 … 11pm=46]</li>
+  <li>close [0am=0; 0.30am=1; 1am=2 … 11pm=46 … 2am(+1d)=52]</li>
+</ul>
+
+<p>We must be able to store opening time during the night, so for the closing time, if it was open the day before we will add 48.<br />
+If the lastest time is 10am (d+1) &lt;=&gt; 48+20 = 68. So it can be encoded as a Mysql TINYINT ( 2^8 ).</p>
+
+<p>Current time is 1915, Mon =&gt; curTime = ceil(19.25<em>2) = 39 ; curDay = 1 ; prevDay = 0;<br />
+Current time is 0130, Sun =&gt; curTime = ceil(1.5</em>2) = 3; curDay = 0; prevDay = 6;<br />
+Get the stores id open:</p>
+
+<blockquote>
+  <p>select distinct(p.store_id) from OpeningPeriod p<br />
+where (day = curDay and open &lt;= curTime and close &gt;= curTime ) OR<br />
+(day = prevDay and open &lt;= curTime+48 and close &gt;= curTime+48)</p>
+</blockquote>
+
+<h2 id="3openingperiod-table-wo-day">3/OpeningPeriod table w/o day</h2>
+
+<p>To simplify, instead of taking as reference for the opening day the beginning of the day, why not just take the beginning of the week? Thus we will take off the day column.</p>
+
+<ul>
+  <li><span style="text-decoration: underline;">id</span></li>
+  <li><em>store_id</em></li>
+  <li>open [0am/Sun=0; 0.30am/Sun=1; 1am/Sun=2 … 11pm/Sun=46 … 6pm/Sat=324 (48*6+18*2)]</li>
+  <li>close [0am/Sun=0; 0.30am/Sun=1; 1am/Sun=2 … 2am/Sun = 4+336 = 340]</li>
+</ul>
+
+<p>The open and close can be encoded as Mysql SMALLINT (2^16)</p>
+
+<p>Current time is 19.15, Mon =&gt; curTime = ceil(19.25<em>2) = 39<br />
+Current time is 01.30, Sun =&gt; curTime = ceil(1.5</em>2) = 3</p>
+
+<p>Get the stores id open:</p>
+
+<blockquote>
+  <p>select distinct(p.store_id) from OpeningPeriod p<br />
+where (open &lt;= curTime and close &gt;= curTime ) OR<br />
+(open &lt;= curTime and close &gt;= curTime+336)</p>
+</blockquote>
+
+<p>Links:</p>
+
+<ul>
+  <li>http://stackoverflow.com/questions/2174523/storing-and-searching-opening-closing-times-for-stores</li>
+  <li><a href="http://stackoverflow.com/questions/1036603/storing-business-hours-in-a-database">http://stackoverflow.com/questions/1036603/storing-business-hours-in-a-database</a></li>
+  <li><a href="http://remy-mellet.com/dev/b48encode.html">http://remy-mellet.com/dev/b48encode.html</a></li>
+</ul>
+
+  </div><a class="u-url" href="/blog/288-storing-opening-and-closing-times-in-database-for-stores/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Remy Mellet</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Remy Mellet</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/remmel"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">remmel</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

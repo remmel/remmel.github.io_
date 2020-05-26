@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Draw SVG rectangle with 1,2,3 or 4 rounded corner | Remy Mellet</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Draw SVG rectangle with 1,2,3 or 4 rounded corner" />
+<meta name="author" content="remmel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Here is the code allowing you to draw with Raphael JS a rectangle with one or many corner rounded and to have a corner more rounded than the other. This code will add roundedRectangle method to Raphael JS (how to extend Raphael). roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner). window.onload = function () { //roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner) Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4){ var array = []; array = array.concat([&quot;M&quot;,x,r1+y, &quot;Q&quot;,x,y, x+r1,y]); //A array = array.concat([&quot;L&quot;,x+w-r2,y, &quot;Q&quot;,x+w,y, x+w,y+r2]); //B array = array.concat([&quot;L&quot;,x+w,y+h-r3, &quot;Q&quot;,x+w,y+h, x+w-r3,y+h]); //C array = array.concat([&quot;L&quot;,x+r4,y+h, &quot;Q&quot;,x,y+h, x,y+h-r4, &quot;Z&quot;]); //D return this.path(array); }; var paper = Raphael(&quot;canvas&quot;, 840, 480); paper.roundedRectangle(10, 10, 80, 80, 0, 10, 25, 5).attr({fill: &quot;#f00&quot;}); } Online example If you don’t want to use Raphael and you don’t want neither to understand how svg path is working, use this function to generate the path corresponding to the corner rounded rectangle: function p(x,y){ return x+&quot; &quot;+y+&quot; &quot;; } function rectangle(x, y, w, h, r1, r2, r3, r4){ var strPath = &quot;M&quot;+p(x+r1,y); //A strPath+=&quot;L&quot;+p(x+w-r2,y)+&quot;Q&quot;+p(x+w,y)+p(x+w,y+r2); //B strPath+=&quot;L&quot;+p(x+w,y+h-r3)+&quot;Q&quot;+p(x+w,y+h)+p(x+w-r3,y+h); //C strPath+=&quot;L&quot;+p(x+r4,y+h)+&quot;Q&quot;+p(x,y+h)+p(x,y+h-r4); //D strPath+=&quot;L&quot;+p(x,y+r1)+&quot;Q&quot;+p(x,y)+p(x+r1,y); //A strPath+=&quot;Z&quot;; return strPath; }" />
+<meta property="og:description" content="Here is the code allowing you to draw with Raphael JS a rectangle with one or many corner rounded and to have a corner more rounded than the other. This code will add roundedRectangle method to Raphael JS (how to extend Raphael). roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner). window.onload = function () { //roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner) Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4){ var array = []; array = array.concat([&quot;M&quot;,x,r1+y, &quot;Q&quot;,x,y, x+r1,y]); //A array = array.concat([&quot;L&quot;,x+w-r2,y, &quot;Q&quot;,x+w,y, x+w,y+r2]); //B array = array.concat([&quot;L&quot;,x+w,y+h-r3, &quot;Q&quot;,x+w,y+h, x+w-r3,y+h]); //C array = array.concat([&quot;L&quot;,x+r4,y+h, &quot;Q&quot;,x,y+h, x,y+h-r4, &quot;Z&quot;]); //D return this.path(array); }; var paper = Raphael(&quot;canvas&quot;, 840, 480); paper.roundedRectangle(10, 10, 80, 80, 0, 10, 25, 5).attr({fill: &quot;#f00&quot;}); } Online example If you don’t want to use Raphael and you don’t want neither to understand how svg path is working, use this function to generate the path corresponding to the corner rounded rectangle: function p(x,y){ return x+&quot; &quot;+y+&quot; &quot;; } function rectangle(x, y, w, h, r1, r2, r3, r4){ var strPath = &quot;M&quot;+p(x+r1,y); //A strPath+=&quot;L&quot;+p(x+w-r2,y)+&quot;Q&quot;+p(x+w,y)+p(x+w,y+r2); //B strPath+=&quot;L&quot;+p(x+w,y+h-r3)+&quot;Q&quot;+p(x+w,y+h)+p(x+w-r3,y+h); //C strPath+=&quot;L&quot;+p(x+r4,y+h)+&quot;Q&quot;+p(x,y+h)+p(x,y+h-r4); //D strPath+=&quot;L&quot;+p(x,y+r1)+&quot;Q&quot;+p(x,y)+p(x+r1,y); //A strPath+=&quot;Z&quot;; return strPath; }" />
+<link rel="canonical" href="http://localhost:4000/blog/179-draw-rectangle-with-123-or-4-rounded-corner/" />
+<meta property="og:url" content="http://localhost:4000/blog/179-draw-rectangle-with-123-or-4-rounded-corner/" />
+<meta property="og:site_name" content="Remy Mellet" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2011-09-05T21:24:37+02:00" />
+<script type="application/ld+json">
+{"description":"Here is the code allowing you to draw with Raphael JS a rectangle with one or many corner rounded and to have a corner more rounded than the other. This code will add roundedRectangle method to Raphael JS (how to extend Raphael). roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner). window.onload = function () { //roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner) Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4){ var array = []; array = array.concat([&quot;M&quot;,x,r1+y, &quot;Q&quot;,x,y, x+r1,y]); //A array = array.concat([&quot;L&quot;,x+w-r2,y, &quot;Q&quot;,x+w,y, x+w,y+r2]); //B array = array.concat([&quot;L&quot;,x+w,y+h-r3, &quot;Q&quot;,x+w,y+h, x+w-r3,y+h]); //C array = array.concat([&quot;L&quot;,x+r4,y+h, &quot;Q&quot;,x,y+h, x,y+h-r4, &quot;Z&quot;]); //D return this.path(array); }; var paper = Raphael(&quot;canvas&quot;, 840, 480); paper.roundedRectangle(10, 10, 80, 80, 0, 10, 25, 5).attr({fill: &quot;#f00&quot;}); } Online example If you don’t want to use Raphael and you don’t want neither to understand how svg path is working, use this function to generate the path corresponding to the corner rounded rectangle: function p(x,y){ return x+&quot; &quot;+y+&quot; &quot;; } function rectangle(x, y, w, h, r1, r2, r3, r4){ var strPath = &quot;M&quot;+p(x+r1,y); //A strPath+=&quot;L&quot;+p(x+w-r2,y)+&quot;Q&quot;+p(x+w,y)+p(x+w,y+r2); //B strPath+=&quot;L&quot;+p(x+w,y+h-r3)+&quot;Q&quot;+p(x+w,y+h)+p(x+w-r3,y+h); //C strPath+=&quot;L&quot;+p(x+r4,y+h)+&quot;Q&quot;+p(x,y+h)+p(x,y+h-r4); //D strPath+=&quot;L&quot;+p(x,y+r1)+&quot;Q&quot;+p(x,y)+p(x+r1,y); //A strPath+=&quot;Z&quot;; return strPath; }","dateModified":"2011-09-05T21:24:37+02:00","url":"http://localhost:4000/blog/179-draw-rectangle-with-123-or-4-rounded-corner/","headline":"Draw SVG rectangle with 1,2,3 or 4 rounded corner","datePublished":"2011-09-05T21:24:37+02:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/179-draw-rectangle-with-123-or-4-rounded-corner/"},"author":{"@type":"Person","name":"remmel"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Remy Mellet" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Remy Mellet</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Draw SVG rectangle with 1,2,3 or 4 rounded corner</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2011-09-05T21:24:37+02:00" itemprop="datePublished">Sep 5, 2011
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">remmel</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img class="alignright size-full wp-image-202" title="Screen shot 2011-09-06 at 12.40.02 AM" src="/wp-content/uploads/2011/09/Screen-shot-2011-09-06-at-12.40.02-AM.png" alt="" width="124" height="127" /><br />Here is the code allowing you to draw with Raphael JS a rectangle with one or many corner rounded and to have a corner more rounded than the other.</p>
+
+<p>This code will add <em>roundedRectangle</em> method to Raphael JS (<a href="http://raphaeljs.com/reference.html#plugins-canvas">how to extend Raphael</a>).</p>
+
+<p><em>roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner)</em>.</p>
+
+<pre class="brush:js">window.onload = function () {
+    //roundedRectangle(x, y, width, height, upper_left_corner, upper_right_corner, lower_right_corner, lower_left_corner)
+    Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4){
+        var array = [];
+        array = array.concat(["M",x,r1+y, "Q",x,y, x+r1,y]); //A
+        array = array.concat(["L",x+w-r2,y, "Q",x+w,y, x+w,y+r2]); //B
+        array = array.concat(["L",x+w,y+h-r3, "Q",x+w,y+h, x+w-r3,y+h]); //C
+        array = array.concat(["L",x+r4,y+h, "Q",x,y+h, x,y+h-r4, "Z"]); //D
+
+        return this.path(array);
+    };
+
+    var paper = Raphael("canvas", 840, 480);
+
+    paper.roundedRectangle(10, 10, 80, 80, 0, 10, 25, 5).attr({fill: "#f00"});
+}</pre>
+
+<p><a href="http://jsdo.it/remmel/1qGu">Online example</a></p>
+
+<p>If you don’t want to use Raphael and you don’t want neither to understand how svg path is working, use this function to generate the path corresponding to the corner rounded rectangle:</p>
+
+<pre class="brush:js">function p(x,y){
+  return x+" "+y+" ";
+}
+
+function rectangle(x, y, w, h, r1, r2, r3, r4){
+  var strPath = "M"+p(x+r1,y); //A
+  strPath+="L"+p(x+w-r2,y)+"Q"+p(x+w,y)+p(x+w,y+r2); //B
+  strPath+="L"+p(x+w,y+h-r3)+"Q"+p(x+w,y+h)+p(x+w-r3,y+h); //C
+  strPath+="L"+p(x+r4,y+h)+"Q"+p(x,y+h)+p(x,y+h-r4); //D
+  strPath+="L"+p(x,y+r1)+"Q"+p(x,y)+p(x+r1,y); //A
+  strPath+="Z";
+
+  return strPath;
+}</pre>
+
+  </div><a class="u-url" href="/blog/179-draw-rectangle-with-123-or-4-rounded-corner/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Remy Mellet</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Remy Mellet</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/remmel"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">remmel</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
