@@ -22,16 +22,9 @@ La station météo utilise un microcontroller RENESAS et 6 capteurs. Ces capteur
   * La direction du vent
   * La quantité de pluie tombé
 
-&nbsp;
-
 [<img class="alignright size-medium wp-image-81" title="meteo_tcltk" src="/wp-content/uploads/2007/04/meteo_tcltk-300x224.jpg" alt="" width="275" height="206" sizes="(max-width: 275px) 100vw, 275px" />](http://www.remy-mellet.com/wp-content/uploads/2007/04/meteo_tcltk.jpg)Ces données sont récupées par la station météo et envoyées par onde radio (ZigBee) à un PC. Ces données seront visualisable sous forme de courbes via un programme développé en Tcl/Tk.
 
-&nbsp;
-
-[<img class="alignleft" src="http://remy.mellet.free.fr/images_old/zip.gif" alt="" />  
-Rapport](http://www.remy-mellet.com/wp-content/uploads/2007/04/Rapport-Station-Météo.pdf)
-
-&nbsp;
+[🖺 Rapport](/wp-content/uploads/2007/04/Rapport-Station-Météo.pdf)
 
 TPs réalisé par groupe de deux en 2ème année d&#8217;info à l&#8217;IUT de Clermont-Ferrand.
 
@@ -42,17 +35,7 @@ Client et d&#8217;un Serveur IRC sous linux parlant le même langage (en objet).
 Le client est doté d&#8217;une interface graphique en ncurses.  
 Le client peut se connecter sur 8 canaux maximum (peut etre modifié simplement (#define)) et change de canal avec les touches F3/F4
 
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-  <tr>
-    <td width="80">
-      <a href="/wp-content/uploads/2011/04/TP_2.IRC.zip"><img src="http://remy.mellet.free.fr/images_old/zip.gif" border="0" alt="zip" width="47" height="46" align="right" /></a>
-    </td>
-    
-    <td width="520">
-      Code source et documentation doxygen
-    </td>
-  </tr>
-</table>
+[🗜️ Code source](/wp-content/uploads/2011/04/TP_2.IRC.zip)
 
 ## Jukebox [C++]
 
@@ -61,14 +44,4 @@ Le lecteur possede un visualisateur en 3D réalisé en openGL.
 Pour la lecteur des tags, le programme utilise taglib.  
 Le son est géré par la librairie Fmod Ex.
 
-<table border="0" cellspacing="0" cellpadding="0" width="600">
-  <tr>
-    <td width="80">
-      <a href="/wp-content/uploads/2011/04/jb.zip"><img src="http://remy.mellet.free.fr/images_old/zip.gif" border="0" alt="zip" width="47" height="46" align="right" /></a>
-    </td>
-    
-    <td width="520">
-      Code source
-    </td>
-  </tr>
-</table>
+[🗜️ Code source](/wp-content/uploads/2011/04/jb.zip)

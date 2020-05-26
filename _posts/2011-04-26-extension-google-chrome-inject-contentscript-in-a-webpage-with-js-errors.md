@@ -13,18 +13,22 @@ tags:
 ---
 Because the webpage contains errors, we can&#8217;t inject directly the content script using this code in the manifest.json file
 
-<pre class="brush: js">"content_scripts": [
+```js
+"content_scripts": [
     {
       "matches": ["http://*/*"],
       "js": ["jquery.js", "content_script.js"]
     }
-  ]</pre>
+  ]
+  ```
 
 But we can inject the code each time the page is changed using an url change event listener, inserting the following code in the background.html page:
 
-<pre class="brush: js">chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
+```js
+chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
 	if(changeInfo.status == "complete" && (tab.url.substr(0,25) == "http://www.mypage.com/" || tab.url.substr(0,26) == "https://www.mypage.com/") ){
 		chrome.tabs.executeScript(null, {file: "jquery.js"});
 		chrome.tabs.executeScript(null, {file: "content_script_injected.js"});
 	}
-  });</pre>
+  });
+```

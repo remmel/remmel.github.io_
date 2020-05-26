@@ -27,4 +27,4 @@ Deux camarades et moi avons décrit, expliqué et simulé à l'aide de l'animati
 
 [Flash](/wp-content/uploads/2011/04/TPE_V1.swf)
 
-[Dossier PDF](/wp-content/uploads/2011/04/impr_laser.pdf)
+[🖺 Dossier PDF](/wp-content/uploads/2011/04/impr_laser.pdf)

@@ -14,7 +14,7 @@ J’habite à Madrid et impossible d’accéder à mon vieux compte FTP free.fr 
 ¿Que pasa?  
 Free n’autorise pas l’accès de votre compte FTP via FTP ou leur Web FTP à partir d’une IP étrangère.
 
-[<img class="alignright size-full wp-image-17" title="ftpperso.free.fr" src="/wp-content/uploads/2011/03/ftpperso.free_.fr_.png" alt="" width="248" height="213" />](/wp-content/uploads/2011/03/ftpperso.free_.fr_.png)
+[<img src="/wp-content/uploads/2011/03/ftpperso.free_.fr_.png" alt="" width="248" height="213" />](/wp-content/uploads/2011/03/ftpperso.free_.fr_.png)
 
 Problème résolu en moins de 5 minutes:
 
