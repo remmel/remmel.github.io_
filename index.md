@@ -5,7 +5,6 @@
 layout: home
 ---
 
-
-Tools
-- sdfsdf
-- sfdsfsf
+# Tools
+- [Tool to create piechart in SVG](tools/piechart.html)
+- [Tool to convert spreadsheet/list to json, php array](tools/spreadsheet-to-array.html)
