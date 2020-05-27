@@ -1,0 +1,13 @@
+.page-map, .ui-content, #map-canvas {
+	/*height: 100%;*/
+	/*width: 100%;*/
+}
+#map-canvas {
+	/*height: min-height: 100%; width:100%*/
+	height: 300px;
+	width: 100%;
+}
+
+table td.stop_time{
+	text-align:center;
+}

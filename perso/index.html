@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Remy's page </title>
+	<meta name="description" content="CV, Remy Mellet, ingenieur informatique, UTC" />
+	<meta name="author" content="Remy Mellet" />
+	<link rel="shortcut-icon" href="favicon.ico" />
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all" />
+	
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/script.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			loadTab();
+			
+			loadPopup();
+		});
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-1744203-6']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+<body>
+	<div id="overlay"></div>
+	<!--[if lt IE 7]>
+		<div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;'>
+			<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode">
+				<img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+	<![endif]-->
+	<div id="page">
+		<div id="header"></div>
+		<div id="menu-webpage">
+			<ul>
+				<li><a href="/" title="Ma page CV">Curriculum Vitae</a></li>
+				<li><a href="#" title="Blog">Blog</a></li>
+			</ul>
+		</div>
+
+		<div id="cv-about-me-personal">
+			<div id="personal-details" class="box">
+				<h1 id="name">Rémy Mellet</h1>
+				<div class="box-inside">
+					<div id="photo">
+						<img src="images/me_picture.jpg" width="70" alt="remy mellet photo" />
+						<ul>
+							<li id="age">
+								<span class="tool">
+									23 ans<span class="tip">31-12-1987</span>
+								</span>
+							</li>
+							<li id="statut">Célibataire</li>
+							<li id="nationality">Français</li>
+							<li id="address">
+								<span class="tool">
+									Madrid
+							   		<span class="tip" style="width:100px">
+										Trav. José Noriega, 3<br />
+										28017 Madrid<br />
+										Espagne
+									</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				
+					<ul id="contact" class="tab-cv">
+						<li id="phone">+34-644-11-0009</li>
+						<li id="email" class="open-popup-email">Me contacter</li>
+						<li class="pdf"><a href="files/MELLET-Remy_CV_FR.pdf">Télécharger CV</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="language" class="box">
+				<h1>Langues</h1>
+				<ul>							
+					<li class="english">
+						<span class="tool">
+							Courant
+					   		<span class="tip" style="width:150px"><b>Anglais</b><br />
+								7 mois de stage au États-Unis + 3 mois en Ecosse
+							</span>
+						</span>	
+					</li>
+					<li class="spanish">
+						<span class="tool">
+							Courant
+					   		<span class="tip" style="width:150px"><b>Espagnol</b><br />
+								A étudié 6 mois en espagne et y travaille depuis 3 mois.</span>
+						</span>
+					</li>
+					<li class="french">
+						<span class="tool">Langue maternelle<span class="tip"><b>Français</b></span></span>
+					</li>
+					
+					<li class="german">
+						<span class="tool">Parlé
+							<span class="tip"><b>Allemand</b></span>
+						</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="hobbies" class="box">
+				<h1>Activité</h1>
+				<ul>
+					<li class="running">
+						<span class="tool">
+							Course à pieds
+					   		<span class="tip" style="width:150px">Joggings réguliers.<br />Semi-marathon de Marrakech en 2010</span>
+						</span>
+						
+					</li>
+					<li class="travelling">Voyager</li>
+					<li class="music">Flûte traversière</li>
+				</ul>
+			</div>
+		</div>
+			
+		<div id="cv-about-me-professional">			
+			<!--div id="objectives" class="box-center">
+				<h1>Ingénieur Junior en informatique à la recherche d'un poste en consulting</h1>
+			</div>
+			
+			<br />-->
+			<div id="cvtab">
+				<div id="menu-cv">
+					<ul >
+						<li class="title-education"><a href="#education">Études</a><span class="d" /></li>
+						<li class="title-experience"><a href="#experience">Expériences professionnelle</a></li>
+						<li class="title-projects"><a href="#projects">Projets personnel et scolaire</a></li>
+						<li class="title-skills"><a href="#skills">Compétances</a></li>
+					</ul>
+				</div>
+
+				<div id="education" class="tab-panel bloc">
+					<table class="bloc">
+						<tbody>
+							<!-- UTC -->
+							<tr>
+								<td class="date" rowspan="2">2007-2010</td>
+								<td class="title">Université de Technologie de Compiègne
+									<span class="location">UTC, France</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Diplôme d'ingénieur en informatique spécialité Management des Projects Innovants.
+								</td>
+							</tr>
+							<tr class="row-space" />
+
+							<!-- ERASMUS UPM -->
+							<tr>
+								<td class="date" rowspan="2">2009 - 6 mois</td>
+								<td class="title">
+									Universidad Politécnica de Madrid
+									<span class="location">Madrid, Espagne</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Semestre d'étude ERASMUS à la Facultad de Informatica
+								</td>
+							</tr>
+							<tr class="row-space" />
+
+							<!-- DUT Clermont-Ferrand -->
+							<tr>
+								<td class="date" rowspan="2">2005 - 2007</td>
+								<td class="title">
+									IUT des Aubieres
+									<span class="location">Clermont-Ferrand, France</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									DUT en informatique option système industriel.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div id="experience" class="tab-panel">
+					<table class="bloc">
+						<tbody>
+							<!-- BABEL -->
+							<tr>
+								<td class="date" rowspan="2">2010.12 - à ce jour<br />3 mois</td>
+								<td class="title">
+									<span class="position">Analyste Développeur J2EE</span>
+									<span class="company"> - Babel, Sistema de información</span>
+									<span class="location">Madrid, Espagne
+										<!--span class="tip">
+											<img src="http://maps.google.com/maps/api/staticmap?center=France&amp;zoom=3&amp;size=256x256&amp;maptype=roadmap&amp;markers=Madrid,Espagne&amp;sensor=false" />
+										</span-->
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									<img class="logo" src="images/logo_babel.gif"/>
+									<ul>
+										<li>Développement du site commercial <a href="http://www.driveon.es">driveon.es</a> avec J2EE/JSF.</li>
+										<li>Développement de la maquette en Flex (Flash) intégré à J2EE (BlaseDS) </li>
+										<li>Configuration du serveur Tomcat et Apache</li>
+										<li class="expand">Traduction d'une application web de l'espagnol vers l'anglais</li>
+									</ul>
+									<span class="keywords">Mots-clés: J2EE, JSF 2, Hibernate, Primefaces, Javascript, JQuery, WebServices Metro, Flex, BlaseDS, Eclipse</span>
+									
+								</td>
+							</tr>
+							<tr class="row-space"><td colspan="2"><hr /></td></tr>
+
+							<!-- APPLE -->
+							<tr>
+								<td class="date" rowspan="2">2010 - 6 mois - stage</td>
+								<td class="title">
+									<span class="position">Analyste Développeur</span>
+									<span class="company"> - Apple, Inc</span>
+									<span class="location tool">Cupertino, CA, États-Unis
+										<span class="tip">
+											<img src="http://maps.google.com/maps/api/staticmap?center=San Mateo,CA,USA&amp;zoom=9&amp;size=256x256&amp;maptype=roadmap&amp;markers=1, inifite loop, Cupertino,CA,USA&amp;sensor=false" />
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									<img class="logo" src="images/logo_apple.gif"/>
+									Développement d'un outil interne de gestion des projets de
+									<span class="tool">
+										localisation
+								   		<span class="tip" style="width:150px">Processus de traduction d'un produit dans différentes langues et d'adaptation de ce produit à différents pays.</span>
+									</span>
+									<ul>
+										<li>Analyse des outils existants et étude des besoins</li>
+										<li>Implémentation de la solution en Ruby on Rails, Perl, PHP et JavaScript</li>
+										<li>Automatisation d'une partie du travail des Projects Managers</li>
+									</ul>
+									<span class="keywords">Mots-clés: Ruby on Rails, Perl, WebServices, SOAP, JSON, PHP, JavaScript</span>
+								</td>
+							</tr>
+							<tr class="row-space"><td colspan="2"><hr /></td></tr>
+
+							<!-- PXL -->
+							<tr>
+								<td class="date" rowspan="2">2009 - 6 mois</td>
+								<td class="title">
+									<span class="position">Analyste Développeur JAVA</span>
+									<span class="company"> - Parexel</span>
+									<span class="location">
+										<span class="">Berlin, Allemagne
+											<!--span class="tip">
+												<img src="http://maps.google.com/maps/api/staticmap?center=Germany&amp;zoom=5&amp;size=256x256&amp;maptype=roadmap&amp;markers=Berlin,Germany&amp;sensor=false" />
+											</span-->
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									<img class="logo" src="images/logo_parexel.png"/>
+									Stage de milieu de cursus
+									<ul>
+										<li>Développement du outil automatisant l'installation du logiciel de l'entreprise dans un parc informatique.</li>
+										<li>Développement de modules du logiciel de l'entreprise</li>
+										<!--li>Écriture de tutorials JAVA</li-->
+										<li>Écriture de Tests</li>
+									</ul>
+									<span class="keywords">Mots-clés: JAVA, Netbeans, PowerBuilder</span>
+
+								</td>
+							</tr>
+							<tr class="row-space"><td colspan="2"><hr /></td></tr>
+
+							<!-- RGU -->
+							<tr>
+								<td class="date" rowspan="2">2007 - 3 mois</td>
+								<td class="title">
+									<span class="position">Analyste Développeur Informatique embarquée</span>
+									<span class="company"> - RGU</span>
+									<span class="location tool">Aberdeen, Écosse
+										<span class="tip">
+											<img src="http://maps.google.com/maps/api/staticmap?center=UK&amp;zoom=4&amp;size=256x256&amp;maptype=roadmap&amp;markers=Aberdeen,%20Scotland&amp;sensor=false" />
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="content">
+									<img class="logo" src="images/logo_rgu.jpg"/>
+									Stage de fin de cursus du DUT<br />
+									Capture, traitement et analyse d'images sous Linux permettant de rendre autonome un véhicule sous-marin.
+									<br />
+									<span class="keywords">Mots-clés: C++, UML, Linux (ioctl, controle), Algorithmique (Hough, Edge, Circle Detection, etc.)</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div id="projects" class="tab-panel">
+					<table class="bloc">
+						<tbody>
+							<!-- Etangs des aulnis -->
+							<tr>
+								<td class="date" rowspan="2">2010, Printemps</td>
+								<td class="title">Développement WEB</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Développement du site web <a href="http://www.etangs-des-aulnis.fr">etangs-des-aulnis.fr</a> pour un loueur de mobilehomes à l'aide du CMS Spip.
+								</td>
+							</tr>
+							<tr class="row-space"><td colspan="2" /></tr>
+
+							<!-- CREENVIE -->
+							<tr>
+								<td class="date" rowspan="2">2009, Printemps</td>
+								<td class="title">Concours CREENVIE</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Obtention du 1er prix au concours CREENVIE création d'entreprise.
+								</td>
+							</tr>
+
+							<tr class="row-space"><td colspan="2" /></tr>
+
+							<!-- COMUTEC -->
+							<tr>
+								<td class="date" rowspan="2">2009, Printemps</td>
+								<td class="title">Étude de faisabilité et de définition du forum étudiants-entreprise COMUTEC</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Direction de l'équipe de 4 personnes. Analyse coût, délais, qualité. Planification du forum. etc.
+								</td>
+							</tr>
+							
+							<tr class="row-space"><td colspan="2" /></tr>
+
+							<!-- Junior Entreprise-->
+							<tr>
+								<td class="date" rowspan="2">2008, Printemps</td>
+								<td class="title">Junior entreprise</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Développement d’une application web pour un particulier via la junior entreprise de l’UTC – PHP, UML, SQL, modèle MVC.
+								</td>
+							</tr>
+							
+							<tr class="row-space"><td colspan="2" /></tr>
+
+							<!-- WEB mining -->
+							<tr>
+								<td class="date" rowspan="2">2008, Printemps</td>
+								<td class="title">WEB Mining</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Développement d'un outil permettant d'étudier l'évolution d'un sujet en crawlant/parcourant le web.
+								</td>
+							</tr>
+							
+							<!-- DATA mining -->
+							<tr>
+								<td class="date" rowspan="2">2008, Printemps</td>
+								<td class="title">Data Mining et Data Warehouse</td>
+							</tr>
+							<tr>
+								<td class="content">
+									Etude des ventes d'une chaine de librairies dans le but de savoir comment améliorer ses ventes.
+							</tr>
+							<!-- ilikefacebook.tk Working experience. station meteo, TPE, Macro excel, Freshly graduated in Computer Science, I’m particularly interested in project management in project which makes easier the development, Y and Z. I'm longing for an international challenging environment.-->
+						</tbody>
+					</table>
+				</div>
+
+				<div id="skills" class="tab-panel">
+					<table class="bloc">
+						<tbody>
+							<tr>
+								<td class="cat">Langages</td>
+								<td class="content">JAVA, C/C++, Perl, Bash, C#, SQL</td>
+							</tr>
+							<tr class="row-space" />
+							<tr>
+								<td class="cat">Web</td>
+								<td class="content">J2EE (Hibernate, JSF 2, Primefaces, WS Metro), Ruby on Rails, JavaScript (jQuery), PHP, HTML, CSS, Spip (CMS), WebServices, AJAX, Flex/Flash/ActionScript, Facebook API, Google Maps API</td>
+							</tr>
+							<tr class="row-space" />
+							<tr>
+								<td class="cat">Serveur</td>
+								<td class="content">Apache, Tomcat, MySQL, PostgreSQL</td>
+							</tr>
+							<!--<tr>
+								<td class="cat">Gestion de Projets</td>
+								<td class="content">GANT, MS Project</td>
+							</tr>-->
+							<tr class="row-space" />
+							<tr>
+								<td class="cat">Méthodologies</td>
+								<td class="content">Merise, POO, UML, MVC, DataMining</td>
+							</tr>
+							<tr class="row-space" />
+							<tr>
+								<td class="cat">IDE/Outils</td>
+								<td class="content">Eclipse, NetBeans, Aptana, PowerBuilder, Access, WinDev, CVS (Subversion)</td>
+							</tr>
+							<tr class="row-space" />
+							<tr>
+								<td class="cat">Operating Systems</td>
+								<td class="content">Windows (XP, Vista, 7), Linux (Ubuntu), Mac OS X 10</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+	
+			</div>
+			
+		</div>
+		<div id="footer" class="box"></div>
+		</div>
+		
+		<!-- http://www.morningcopy.com.au/tutorials/how-to-style-google-forms/ -->
+		<script type="text/javascript">var submitted=false;</script>
+		<iframe name="hidden_iframe" id="hidden_iframe"
+		style="display:none;" onload="if(submitted)
+		{window.location='.';}"></iframe>
+		<div id="popup-email" class="popup">
+			<h1>Me contacter</h1>
+			<form action="https://spreadsheets.google.com/formResponse?formkey=dHNiZmF1R1dua3ltU0drVUhFNnNqbFE6MQ&amp;embedded=true&amp;ifq" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+				<br />
+				<div class="errorbox-good">
+				<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_0">Prénom
+				</label>
+				<label class="ss-q-help" for="entry_0"></label>
+				<input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0" /></div></div></div>
+				<br /> <div class="errorbox-good">
+				<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_1">Nom
+				</label>
+				<label class="ss-q-help" for="entry_1"></label>
+				<input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1" /></div></div></div>
+				<br /> <div class="errorbox-good">
+				<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_2">Votre adresse email
+				</label>
+
+				<label class="ss-q-help" for="entry_2"></label>
+				<input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2" /></div></div></div>
+				<br /> <div class="errorbox-good">
+				<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_3">Objet du message
+				</label>
+				<label class="ss-q-help" for="entry_3"></label>
+				<input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3" /></div></div></div>
+				<br /> <div class="errorbox-good">
+				<div class="ss-item  ss-paragraph-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_4">Votre message
+				</label>
+				<label class="ss-q-help" for="entry_4"></label>
+				<textarea name="entry.4.single" rows="8" cols="60" class="ss-q-long" id="entry_4"></textarea></div></div></div>
+				<br />
+				<input type="hidden" name="pageNumber" value="0" />
+
+				<input type="hidden" name="backupCache" value="" />
+
+				<div class="ss-item ss-navigate"><div class="ss-form-entry">
+				<input type="submit" name="submit" value="Envoyer" /></div></div>
+			</form>
+			<img src="css/close.png" class="popup-close"/>
+		</div>
+	</body>
+</html>

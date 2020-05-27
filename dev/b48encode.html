@@ -1,0 +1,520 @@
+<html>
+
+
+    <head>
+        <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script>
+            var Utils = {
+                /**
+                 * All possibilities can be store
+                 */
+                convertToB336 : function(t){
+                    var res = 0;
+                    $.each(t, function(k,v){
+                        if(v){
+                            res += Math.pow(2,k);
+                        }
+                        
+                    });
+                    return res;
+                },
+                /**
+                 * List of couple(start;end)
+                 */
+                convertToListCouple: function(t){
+                    var couples = [];
+                    //var couple = [];
+                    
+                    var currentIsOpen = false;
+                    var currentHalfHourOpen = 0;
+                    $.each(t, function(k,v){
+                        //is opening
+                        if(v && !currentIsOpen){
+                            currentIsOpen = true;
+                            currentHalfHourOpen = k;
+                        }
+                        //is closing
+                        if(!v && currentIsOpen){
+                            currentIsOpen = false;
+                            couples.push([currentHalfHourOpen, k]);
+                        }
+                        
+                    });
+                    return couples;
+                },
+                /**
+                 * Return an array of 1/2h. 1st (left) is monday 10:00-10:30 last is monday 9:30-10:00
+                 */
+                tableToBinaryArray : function(){
+                    var binaryArray = [];
+                    $.each($("tbody td:not(.nodata)"), function(k,v){
+                        binaryArray.push($(v).hasClass("selected"));
+                    });
+                    return binaryArray;
+                }
+            };
+        
+        
+        
+            $( document ).ready(function(){
+                $( "tbody td" ).click(function(e) {
+                    var $e = $(e.target);
+                    if($e.hasClass("selected")){
+                      $e.removeClass("selected");
+                    }else{
+                      $e.addClass("selected");
+                    }
+                    var binaryArray = Utils.tableToBinaryArray();
+                    var v = Utils.convertToB336(binaryArray);
+                    var couples = Utils.convertToListCouple(binaryArray);
+                    
+                    
+                    $('input[name=b48]').val(v);
+                    $('input[name=couples]').val(JSON.stringify(couples));
+                });
+            });
+            
+        </script>
+        <style>
+            table{
+                
+            }
+            
+            table td{
+                width: 10px;
+                height: 12px;
+                background-color: green;
+                font-size: 9px;
+                text-align: center;
+            }
+            
+            table td.selected{
+                background-color: red;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <table border="0">
+        <thead>
+            <tr>
+                <td></td>
+                <td colspan = "2">0h</td>
+                <td colspan = "2">1h</td>
+                <td colspan = "2">2h</td>
+                <td colspan = "2">3h</td>
+                <td colspan = "2">4h</td>
+                <td colspan = "2">5h</td>
+                <td colspan = "2">6h</td>
+                <td colspan = "2">7h</td>
+                <td colspan = "2">8h</td>
+                <td colspan = "2">9h</td>
+                <td colspan = "2">10h</td>
+                <td colspan = "2">11h</td>
+                <td colspan = "2">12h</td>
+                <td colspan = "2">13h</td>
+                <td colspan = "2">14h</td>
+                <td colspan = "2">15h</td>
+                <td colspan = "2">16h</td>
+                <td colspan = "2">17h</td>
+                <td colspan = "2">18h</td>
+                <td colspan = "2">19h</td>
+                <td colspan = "2">20h</td>
+                <td colspan = "2">21h</td>
+                <td colspan = "2">22h</td>
+                <td colspan = "2">23h</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="nodata">L</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">M</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">X</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">J</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">V</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">S</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="nodata">D</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        
+        
+        
+        
+        
+        <h1>1st technique : all possibilities</h1>
+        <ul>
+            <li><input type="text" name="b48"></li>
+            <li>Precision : 1/2 hour</li>
+            <li>Monday 0h-0h30 is LSB</li>
+            <li>Possibilities for a day: 2^(24*2) = 2^48</li>
+            <li>Possibilities for the week: 2^(24*2*7) = 2^336</li>
+            <li>Mysql Bigint:  2^64 (0 à 18446744073709551615 ; 1.8446744e+19 )</li>
+            <li>Mysql Int:  2^32 (0 à 4294967296)</li>
+            <li>Mysql MEDIUMINT:  2^24 (0 à 16777215)</li>
+            <li>Mysql SMALLINT:  2^16 (0 à 65535)</li>
+            <li>Mysql TINYINT;BOOLEAN;BIT;BOOL:  2^8 (0 à 255)</li>
+            <li>Problem => The whole data can't be encoded in one data (but 7 biginteger) => hard to compare quickly and easily. Do not need to handle suchs possibilities. Place won't close and open 20 times in the same day</li>
+        </ul>
+        
+        <h1>3rd technique : list of open-close of 1/2 hour of the week</h1>
+        <ul>
+            <li><input type="text" name="couples"></li>
+            <li>Precision : 1/2 hour</li>
+            <li>1/2 hour of the week encoded on number between 0 to 24*2*7=336 => SMALLINT</li>
+            
+        </ul>
+        
+       
+        
+        
+    </body>
+</html>
