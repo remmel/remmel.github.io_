@@ -65,15 +65,17 @@ Current time is 1915, Mon => curTime = ceil(19.25*2) = 39 ; curDay = 1 ; prevDay
 Current time is 0130, Sun => curTime = ceil(1.5*2) = 3; curDay = 0; prevDay = 6;  
 Get the stores id open:
 
-> select distinct(p.store_id) from OpeningPeriod p  
-> where (day = curDay and open <= curTime and close >= curTime ) OR  
-> (day = prevDay and open <= curTime+48 and close >= curTime+48)
+```sql
+select distinct(p.store_id) from OpeningPeriod p  
+where (day = curDay and open <= curTime and close >= curTime ) OR  
+(day = prevDay and open <= curTime+48 and close >= curTime+48)
+```
 
 ## 3/OpeningPeriod table w/o day
 
 To simplify, instead of taking as reference for the opening day the beginning of the day, why not just take the beginning of the week? Thus we will take off the day column.
 
-  * <span style="text-decoration: underline;">id</span>
+  * __id__
   * _store_id_
   * open [0am/Sun=0; 0.30am/Sun=1; 1am/Sun=2 &#8230; 11pm/Sun=46 &#8230; 6pm/Sat=324 (48\*6+18\*2)]
   * close [0am/Sun=0; 0.30am/Sun=1; 1am/Sun=2 &#8230; 2am/Sun = 4+336 = 340]
@@ -85,9 +87,11 @@ Current time is 01.30, Sun => curTime = ceil(1.5*2) = 3
 
 Get the stores id open: 
 
-> select distinct(p.store_id) from OpeningPeriod p  
-> where (open <= curTime and close >= curTime ) OR  
-> (open <= curTime and close >= curTime+336)
+```sql
+select distinct(p.store_id) from OpeningPeriod p  
+where (open <= curTime and close >= curTime ) OR  
+(open <= curTime and close >= curTime+336)
+```
 
 Links:
 

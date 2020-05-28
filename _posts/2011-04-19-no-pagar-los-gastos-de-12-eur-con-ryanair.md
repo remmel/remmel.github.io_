@@ -9,7 +9,7 @@ permalink: /blog/101-no-pagar-los-gastos-de-12-eur-con-ryanair/
 categories:
   - Uncategorized
 ---
-<img class="alignright size-medium wp-image-102" title="Screen shot 2011-04-19 at 12.32.29 PM" src="/wp-content/uploads/2011/04/Screen-shot-2011-04-19-at-12.32.29-PM-148x300.png" alt="" width="148" height="300" srcset="/wp-content/uploads/2011/04/Screen-shot-2011-04-19-at-12.32.29-PM-148x300.png 148w, /wp-content/uploads/2011/04/Screen-shot-2011-04-19-at-12.32.29-PM.png 288w" sizes="(max-width: 148px) 100vw, 148px" />
+<img src="/wp-content/uploads/2011/04/Screen-shot-2011-04-19-at-12.32.29-PM-148x300.png" width="148" height="300" />
 
 Para no pagar los 12 euros de gastos bancarios (6€ ida + 6€ vuelta), necesitas una tarjeta **MasterCard Prepaid**.  
 Se puede conseguir en varios bancos españoles como Santander, La Caixa, Caja Madrid, etc.
@@ -22,7 +22,7 @@ He eligido la de La Caixa llamada **Cyber Tarjeta** porque:
   * No tienes que esperar para tenerla (te la dan en el momento)
   * Puedes recargarla desde un cajero (pero no desde internet, si no tienes cuenta).
 
-[<img class="alignright size-medium wp-image-104" title="Cyber tarjeta la Caixa" src="/wp-content/uploads/2011/04/cybmasteres3-300x236.jpg" alt="" width="300" height="236" srcset="/wp-content/uploads/2011/04/cybmasteres3-300x236.jpg 300w, /wp-content/uploads/2011/04/cybmasteres3.jpg 416w" sizes="(max-width: 300px) 100vw, 300px" />](/wp-content/uploads/2011/04/cybmasteres3.jpg)Otra información (a verificar):
+[<img title="Cyber tarjeta la Caixa" src="/wp-content/uploads/2011/04/cybmasteres3-300x236.jpg" width="300" height="236" />](/wp-content/uploads/2011/04/cybmasteres3.jpg)Otra información (a verificar):
 
   * Esta tarjeta es anonima
   * Cualquier persona que tenga el número de la tarjeta puede cargarla, pero solamente el titular puede recuperar el dinero.

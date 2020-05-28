@@ -17,8 +17,10 @@ Cela va vous permettre d&#8217;utiliser la version php 5.4.0beta1.
   
 Il reste maintenant le problème de timezone, pour cela créez un fichier php.ini dans le répertoire Symfony/web contenant:  
   
-`date.timezone = "Europe/Paris"<br />
-short_open_tag = off<br />
-magic_quotes_gpc = off<br />`  
+```ini
+date.timezone = "Europe/Paris"
+short_open_tag = off
+magic_quotes_gpc = off
+```
   
 Maintenant vous pouvez lancer, `http://foo/bar/Symfony/web/config.php` et vous ne devriez plus avoir de problèmes.

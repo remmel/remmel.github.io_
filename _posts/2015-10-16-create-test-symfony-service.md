@@ -15,18 +15,20 @@ Here is the code to create a service which uses the translator component from Sy
 
 in _messages.en.yml_ :
 
-<pre>cb.texta1: Travel from %A% to %B%</pre>
+```yml
+cb.texta1: Travel from %A% to %B%
+```
 
 in _services.yml_ :
-
-<pre>cb.labelbuilder:
+```yml
+cb.labelbuilder:
   class: AppBundle\Service\LabelBuilder
-  arguments: [@translator]</pre>
+  arguments: [@translator]
+```
 
-_LabelBuilder.php_`<br />
-` 
-
-<pre class="brush:php">namespace AppBundle\Service;
+_LabelBuilder.php_ :
+```php
+namespace AppBundle\Service;
 
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -37,26 +39,26 @@ class LabelBuilder {
     private $translator;
 
     public function __construct(TranslatorInterface $translator) {
-        $this-&gt;translator = $translator;
+        $this->translator = $translator;
     }
 
     public function buildText1($labelA, $labelB) {
-        return $this-&gt;translator-&gt;trans(
+        return $this->translator->trans(
             'cb.texta1',
             [
-                '%A%' =&gt; $labelA,
-                '%B%' =&gt; $labelB
+                '%A%' => $labelA,
+                '%B%' => $labelB
             ]
         );
     }
-}</pre>
-
-`<br />
-` 
+}
+```
 
 ## Use the service in your controller
 
-<pre>$this-&gt;get('cb.labelbuilder')-&gt;buildText1($lblA, $lblB);</pre>
+```php
+$this->get('cb.labelbuilder')->buildText1($lblA, $lblB);
+```
 
 ## To test with PHPUnit
 
@@ -64,7 +66,8 @@ class LabelBuilder {
 
 _LabelBuilderTest.php_
 
-<pre class="brush:php">namespace AppBundle\Service;
+```php
+namespace AppBundle\Service;
 
 use AppBundle\Entity\StatPriceDuration;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -75,21 +78,19 @@ class LabelBuilderTest extends WebTestCase {
 
     public static function setUpBeforeClass() {
         $kernel = static::createKernel();
-        $kernel-&gt;boot();
-        self::$translation = $kernel-&gt;getContainer()-&gt;get('translator');
+        $kernel->boot();
+        self::$translation = $kernel->getContainer()->get('translator');
     }
 
     public function testBuildText1() {
         $builder = new LabelBuilder(self::$translation);
 
-        $result = $builder-&gt;buildText1("Paris", "Lille");
+        $result = $builder->buildText1("Paris", "Lille");
 
-        $this-&gt;assertEquals(
+        $this->assertEquals(
             trim($result),
             "Travel from Paris to Lille"
         );
     }
-}</pre>
-
-_  
-_
+}
+```

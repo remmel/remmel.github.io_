@@ -20,9 +20,7 @@ This extension allows you to save time when booking a Ryanair ticket by:
 
 You can change you preferences (which will be set automatically the first time you buy a ticket whis the extension enable) by clicking on the icon which appear when you are on ryanair website.
 
-<p style="text-align: center;">
-  <a href="/wp-content/uploads/2011/04/RyanairExtensionScreeshot.png"><img class="size-full wp-image-138 aligncenter" title="RyanairExtensionScreeshot" src="/wp-content/uploads/2011/04/RyanairExtensionScreeshot.png" alt="" width="492" height="214" /></a>
-</p>
+  <a href="/wp-content/uploads/2011/04/RyanairExtensionScreeshot.png"><img title="RyanairExtensionScreeshot" src="/wp-content/uploads/2011/04/RyanairExtensionScreeshot.png" alt="" width="492" height="214" /></a>
 
 Developers:  
 Download source code : [ryanair_preferences](/wp-content/uploads/2011/04/ryanair_preferences.zip)  

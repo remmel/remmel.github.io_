@@ -11,24 +11,36 @@ categories:
 ---
 Lets say you have the following 2 lines csv file :
 
-> `jules,23<br />
-thomas,`
+```
+jules,23
+thomas,
+```
 
 And object :
 
-> `Class Person {<br />
-String name;<br />
-Integer age;<br />
-//getter + setter<br />
-}`
+```java
+Class Person {
+  String name;
+  Integer age;
+  //getter + setter
+}
+```
 
 When you use the java opencsv library to map that csv to the object, it will throw an exception :
 
-> Caused by: java.lang.NumberFormatException: Zero length string at java.lang.Integer.decode(Integer.java:1162) at com.sun.beans.editors.IntegerEditor.setAsText(IntegerEditor.java:39) at au.com.bytecode.opencsv.bean.CsvToBean.convertValue(CsvToBean.java:82) at au.com.bytecode.opencsv.bean.CsvToBean.processLine(CsvToBean.java:63) at au.com.bytecode.opencsv.bean.CsvToBean.parse(CsvToBean.java:48) &#8230; 22 more
+```
+Caused by: java.lang.NumberFormatException: Zero length string at 
+java.lang.Integer.decode(Integer.java:1162) at 
+com.sun.beans.editors.IntegerEditor.setAsText(IntegerEditor.java:39) at 
+au.com.bytecode.opencsv.bean.CsvToBean.convertValue(CsvToBean.java:82) at 
+au.com.bytecode.opencsv.bean.CsvToBean.processLine(CsvToBean.java:63) at 
+au.com.bytecode.opencsv.bean.CsvToBean.parse(CsvToBean.java:48) … 22 more
+```
 
 [doesn&#8217;t work!!!!] After looking at the source code I tried to add my custom PropertyEditor:
 
-<pre>public class IntegerEmptyEditor extends NumberEditor {
+```java
+public class IntegerEmptyEditor extends NumberEditor {
     public IntegerEmptyEditor() {
     }
     public void setAsText(String var1) throws IllegalArgumentException {
@@ -36,24 +48,28 @@ When you use the java opencsv library to map that csv to the object, it will thr
     }
 }
 
-<span style="color: #222222; font-family: 'Courier 10 Pitch', Courier, monospace; line-height: 21px;">PropertyEditorManager.registerEditor(Integer.class, IntegerEmptyEditor.class);
-</span><span style="color: #222222; font-family: 'Courier 10 Pitch', Courier, monospace; line-height: 21px;">PropertyEditor pe = PropertyEditorManager.findEditor(Integer.class);
-//  BUT RETURN IntegerEditor instead of IntegerEmptyEditor</span></pre>
+PropertyEditorManager.registerEditor(Integer.class, IntegerEmptyEditor.class);
+PropertyEditor pe = PropertyEditorManager.findEditor(Integer.class);
+//  BUT RETURN IntegerEditor instead of IntegerEmptyEditor</span>
+```
 
-Instead, let&#8217;s treat all empty string value like null value :
+Instead, let's treat all empty string value like null value :
 
-<pre>CsvToBean csv = new CsvToBean() {
+```java
+CsvToBean csv = new CsvToBean() {
     protected Object convertValue(String value, PropertyDescriptor prop) throws InstantiationException, IllegalAccessException {
         if(StringUtils.isEmpty(value)) {
             value = null;
         }
         return super.convertValue(value, prop);
     }
-};</pre>
+};
+```
 
 Complete code mapping the csv file to the object :
 
-<pre>CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/utils/csv/person.csv"));
+```java
+CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/utils/csv/person.csv"));
 ColumnPositionMappingStrategy strat = new ColumnPositionMappingStrategy();
 strat.setType(Person.class);
 String[] columns = new String[] {"name", "age"};
@@ -66,5 +82,6 @@ CsvToBean csv = new CsvToBean() {
         return super.convertValue(value, prop);
     }
 };
-List&lt;StopExt&gt; list = csv.parse(strat, csvReader);
-csvReader.close();</pre>
+List<StopExt> list = csv.parse(strat, csvReader);
+csvReader.close();
+```

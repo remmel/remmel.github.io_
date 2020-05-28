@@ -12,7 +12,8 @@ categories:
 Vous voulez accèder au fichier app_dev.php ou config.php de votre application Symfony 2, mais vous avez l&#8217;erreur &#8220;This script is only accessible from localhost&#8221; ou &#8220;You are not allowed to access this file&#8221;.  
 Récupérer votre IP et ajouter là dans le fichier app_dev.php et config.php en modifiant le code ci-dessous:
 
-<pre class="brush:php">if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
+```php
+if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     '127.0.0.1',
     '::1',
 	'MONIP'
@@ -20,4 +21,4 @@ Récupérer votre IP et ajouter là dans le fichier app_dev.php et config.php en
     header('HTTP/1.0 403 Forbidden');
     exit('This script is only accessible from localhost.');
 }
-</pre>
+```

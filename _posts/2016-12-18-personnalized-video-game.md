@@ -9,7 +9,7 @@ permalink: /blog/348-personnalized-video-game/
 categories:
   - Uncategorized
 ---
-[<img class="size-medium wp-image-350 aligncenter" title="KustAdventure : personnalized game to gift" src="/wp-content/uploads/2016/12/Screenshot_2016-12-18-16-42-03-994_com.kustgame.kustmario-300x168.png" alt="" width="300" height="168" srcset="http://www.remy-mellet.com/wp-content/uploads/2016/12/Screenshot_2016-12-18-16-42-03-994_com.kustgame.kustmario-300x168.png 300w, http://www.remy-mellet.com/wp-content/uploads/2016/12/Screenshot_2016-12-18-16-42-03-994_com.kustgame.kustmario-1024x576.png 1024w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.KustGame.com)
+[<img title="KustAdventure : personnalized game to gift" src="/wp-content/uploads/2016/12/Screenshot_2016-12-18-16-42-03-994_com.kustgame.kustmario-300x168.png" width="300" height="168" />](http://www.KustGame.com)
 
 As a side project, I&#8217;m developing [KustGame](http://www.KustGame.com) a mobile video game where you can :
 
@@ -17,7 +17,7 @@ As a side project, I&#8217;m developing [KustGame](http://www.KustGame.com) a mo
   * add custom pictures
   * add special messages
 
-<span style="font-size: 16px;">The idea came when looking for a original way to offer a gift to my girlfriend : she had to finish the game to get the message indicating where was hidden the gift.</span>
+The idea came when looking for a original way to offer a gift to my girlfriend : she had to finish the game to get the message indicating where was hidden the gift.
 
 In order to have quickly a product to sell, I used :
 
@@ -26,7 +26,7 @@ In order to have quickly a product to sell, I used :
   * Plain PHP without framework to develop the simple backend (no Java, no Symfony)
   * Shared host
   * jQuery to add nice interactions in the customize form (no angular, no backbone)
-  * PayPal for it&#8217;s simple API (NVP)
+  * PayPal for its simple API (NVP)
 
 The aim of that version is to be as simple as possible and to test if there is a market.
 
